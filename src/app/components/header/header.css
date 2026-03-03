@@ -1,0 +1,812 @@
+/* Header Styles */
+.header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+/* Карусель */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Слайд */
+.carousel-slide {
+    flex: 0 0 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Изображение */
+.slide-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    transition: transform 8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide.active .slide-image {
+    transform: scale(1);
+}
+
+/* Затемнение */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(12, 12, 15, 0.95) 0%,
+            rgba(12, 12, 15, 0.8) 50%,
+            rgba(12, 12, 15, 0.6) 100%);
+}
+
+/* Контент слайда */
+.slide-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.slide-text-container {
+    max-width: 650px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInContent 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideInContent {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-subtitle {
+    display: inline-block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 50px;
+}
+
+.slide-subtitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-blue);
+    transform: translateY(-50%);
+    animation: expandWidth 0.8s ease forwards;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 30px;
+    }
+}
+
+.slide-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slide-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--gray-200);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* Кнопки действия */
+.slide-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.slide-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.slide-button.primary {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.slide-button.phone {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    gap: 0.5rem;
+}
+
+.slide-button:hover {
+    transform: translateY(-2px);
+}
+
+.slide-button.primary:hover {
+    box-shadow: 0 10px 30px rgba(10, 102, 194, 0.4);
+}
+
+.slide-button.phone:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(10, 102, 194, 0.4);
+}
+
+.phone-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.slide-button.phone:hover .phone-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.button-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.slide-button:hover .button-glow {
+    width: 300px;
+    height: 300px;
+}
+
+/* Плавающая кнопка телефона */
+.floating-phone-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    border: none;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(10, 102, 194, 0.4);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.floating-phone-icon {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.floating-phone-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.floating-phone-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(10, 102, 194, 0.6);
+}
+
+.floating-phone-button:hover .floating-phone-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.floating-phone-button:hover .floating-phone-glow {
+    opacity: 0.2;
+}
+
+.floating-phone-button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    animation: pulse-phone 2s infinite;
+}
+
+@keyframes pulse-phone {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Кнопки навигации */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(30, 30, 38, 0.8);
+    border: 1px solid var(--gray-700);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.carousel-button.prev {
+    left: 30px;
+}
+
+.carousel-button.next {
+    right: 30px;
+}
+
+.carousel-button:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(10, 102, 194, 0.4);
+}
+
+.carousel-button svg {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.carousel-button:hover svg {
+    transform: scale(1.2);
+}
+
+/* Точки навигации */
+.carousel-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 40px;
+    height: 3px;
+    background: var(--gray-600);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dot-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-blue);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.dot.active .dot-inner {
+    transform: translateX(0);
+}
+
+.dot:hover {
+    background: var(--gray-500);
+}
+
+/* Счетчик слайдов */
+.slide-counter {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(30, 30, 38, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--gray-700);
+}
+
+.slide-counter .current {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+}
+
+.slide-counter .separator {
+    color: var(--gray-500);
+}
+
+.slide-counter .total {
+    color: var(--gray-400);
+}
+
+/* Индикатор прокрутки */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.scroll-line {
+    width: 2px;
+    height: 60px;
+    background: var(--gray-600);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-blue);
+    animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 2px;
+    background: var(--accent-blue);
+    position: relative;
+}
+
+.scroll-arrow::before,
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--accent-blue);
+    border-bottom: 2px solid var(--accent-blue);
+    transform: rotate(45deg);
+    left: -3px;
+    animation: scrollArrow 2s ease-in-out infinite;
+}
+
+.scroll-arrow::before {
+    top: 0;
+    animation-delay: 0.2s;
+}
+
+.scroll-arrow::after {
+    top: 8px;
+    animation-delay: 0.4s;
+}
+
+@keyframes scrollArrow {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+}
+
+.scroll-indicator:hover .scroll-line::after {
+    animation-duration: 1s;
+}
+
+.scroll-indicator:hover .scroll-text {
+    color: var(--accent-blue);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-button.prev {
+        left: 20px;
+    }
+
+    .carousel-button.next {
+        right: 20px;
+    }
+
+    .slide-content {
+        padding-left: 5%;
+    }
+
+    .slide-actions {
+        gap: 0.875rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-button {
+        display: none;
+    }
+
+    .slide-overlay {
+        background: linear-gradient(to bottom,
+                rgba(12, 12, 15, 0.95) 0%,
+                rgba(12, 12, 15, 0.8) 100%);
+    }
+
+    .slide-content {
+        justify-content: center;
+        text-align: center;
+        padding: 0 1.5rem;
+    }
+
+    .slide-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slide-subtitle {
+        padding-left: 0;
+    }
+
+    .slide-subtitle::before {
+        display: none;
+    }
+
+    .slide-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .slide-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .slide-button {
+        flex: 1 1 auto;
+        min-width: 200px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .slide-counter {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .floating-phone-button {
+        display: flex;
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
+}
+
+@media (max-width: 640px) {
+    .slide-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .slide-button {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .phone-text {
+        display: inline;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-title {
+        font-size: 2rem;
+    }
+
+    .slide-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .carousel-dots {
+        bottom: 20px;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 30px;
+    }
+
+    .slide-counter {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .slide-counter .current {
+        font-size: 1rem;
+    }
+
+    .floating-phone-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .floating-phone-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .slide-title {
+        font-size: 1.75rem;
+    }
+
+    .slide-description {
+        font-size: 0.9rem;
+    }
+
+    .slide-actions {
+        max-width: 250px;
+    }
+
+    .slide-button {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .phone-icon {
+        font-size: 1rem;
+    }
+
+    .floating-phone-button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .floating-phone-icon {
+        font-size: 1.3rem;
+    }
+}
+
+/* Улучшения для touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+
+    .slide-button,
+    .floating-phone-button,
+    .carousel-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .slide-button:active,
+    .floating-phone-button:active,
+    .carousel-button:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Анимация пульсации для активной точки */
+.dot.active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(10, 102, 194, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(10, 102, 194, 0);
+    }
+}
+
+/* Добавьте эти стили в ваш header.css */
+
+.slide-button.call-button {
+    background-color: #0A66C2;
+    color: white;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.slide-button.call-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 176, 155, 0.4);
+    background: linear-gradient(135deg, #00a389, #7eb832);
+}
+
+.call-icon {
+    font-size: 1.2rem;
+    animation: ring 2s infinite;
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(0);
+    }
+    10% {
+        transform: rotate(15deg);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+    30% {
+        transform: rotate(15deg);
+    }
+    40% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .slide-button.call-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-button.call-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .call-icon {
+        font-size: 1rem;
+    }
+}

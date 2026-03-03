@@ -1,0 +1,313 @@
+/* globals.css */
+:root {
+    /* Основная цветовая схема - премиальный темно-серый с синим акцентом */
+
+    /* Фоны */
+    --bg-primary: #0C0C0F;
+    /* Основной фон - глубокий черно-серый */
+    --bg-secondary: #14141A;
+    /* Вторичный фон - чуть светлее */
+    --bg-tertiary: #1E1E26;
+    /* Третичный фон для карточек/элементов */
+    --bg-elevated: #282830;
+    /* Фон для всплывающих элементов */
+
+    /* Акцентный синий Gree */
+    --accent-blue: #0A66C2;
+    /* Основной синий (как у Gree) */
+    --accent-blue-hover: #1A7AD9;
+    /* Синий для hover состояний */
+    --accent-blue-soft: rgba(10, 102, 194, 0.1);
+    /* Полупрозрачный синий */
+    --accent-blue-glow: rgba(10, 102, 194, 0.3);
+    /* Свечение */
+
+    /* Текст */
+    --text-primary: #FFFFFF;
+    /* Основной текст - белый */
+    --text-secondary: #B0B0C0;
+    /* Вторичный текст - светлый серый */
+    --text-tertiary: #808090;
+    /* Третичный текст - более темный серый */
+    --text-disabled: #505060;
+    /* Неактивный текст */
+
+    /* Серые оттенки для границ и разделителей */
+    --gray-100: #E0E0F0;
+    /* Самый светлый серый */
+    --gray-200: #C0C0D0;
+    --gray-300: #A0A0B0;
+    --gray-400: #808090;
+    --gray-500: #606070;
+    --gray-600: #404050;
+    --gray-700: #303040;
+    --gray-800: #202030;
+    /* Темный серый для границ */
+    --gray-900: #101020;
+    /* Очень темный серый */
+
+    /* Границы */
+    --border-light: 1px solid #303040;
+    --border-regular: 1px solid #404050;
+    --border-bold: 2px solid #0A66C2;
+
+    /* Тени */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-blue: 0 4px 20px rgba(10, 102, 194, 0.3);
+
+    /* Скругления */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+
+    /* Анимации */
+    --transition-fast: 0.15s ease;
+    --transition-regular: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* Шрифты (из вашего layout) */
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+
+    /* Контейнер */
+    --container-width: 1280px;
+    --container-padding: 2rem;
+}
+
+/* Базовая стилизация */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Типографика */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(to right, #FFFFFF, var(--gray-200));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-blue-hover);
+}
+
+/* Акцентные элементы */
+.accent-text {
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+.accent-border {
+    border-bottom: 2px solid var(--accent-blue);
+    padding-bottom: 0.5rem;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-regular);
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: var(--shadow-blue);
+}
+
+.btn-primary:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(10, 102, 194, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: var(--border-regular);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-blue);
+}
+
+/* Карточки */
+.card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: var(--border-light);
+    transition: all var(--transition-regular);
+}
+
+.card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.card-highlight {
+    border: 1px solid var(--accent-blue);
+    box-shadow: var(--shadow-blue);
+}
+
+/* Градиенты */
+.gradient-overlay {
+    background: linear-gradient(135deg,
+            var(--bg-primary) 0%,
+            rgba(10, 102, 194, 0.1) 50%,
+            var(--bg-primary) 100%);
+}
+
+.gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+        linear-gradient(135deg, var(--accent-blue), transparent) border-box;
+}
+
+/* Утилиты */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #FFFFFF, var(--gray-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray-700);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* Выделение текста */
+::selection {
+    background: var(--accent-blue-soft);
+    color: var(--text-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    :root {
+        --container-padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .section {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+}

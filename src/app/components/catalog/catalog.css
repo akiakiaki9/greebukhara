@@ -1,0 +1,1233 @@
+/* Catalog Styles */
+.catalog {
+    padding: 6rem 0;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.catalog::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+}
+
+.catalog-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Заголовок */
+.catalog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.catalog-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.title-accent {
+    color: var(--accent-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: var(--accent-blue-soft);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.catalog-subtitle {
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Кнопка фильтра для мобильных */
+.mobile-filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--gray-800);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-filter-toggle svg {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+}
+
+.mobile-filter-toggle:hover {
+    border-color: var(--accent-blue);
+    background: var(--bg-tertiary);
+}
+
+/* Фильтры */
+.filters-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--gray-800);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.filters-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+}
+
+.filters-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-end;
+}
+
+/* Поиск */
+.search-box {
+    flex: 2;
+    min-width: 250px;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.5rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--accent-blue-soft);
+}
+
+.search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.clear-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.clear-search:hover {
+    color: var(--accent-blue);
+}
+
+/* Группы фильтров */
+.filter-group {
+    flex: 1;
+    min-width: 160px;
+}
+
+.filter-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--accent-blue-soft);
+}
+
+/* Range slider */
+.price-filter {
+    min-width: 200px;
+    flex: 1.5;
+}
+
+.price-range {
+    width: 100%;
+    height: 4px;
+    background: var(--gray-700);
+    border-radius: 999px;
+    appearance: none;
+    margin: 1rem 0;
+}
+
+.price-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-blue-glow);
+}
+
+.price-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.price-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-blue-glow);
+    border: none;
+}
+
+.price-range::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+.price-values {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Кнопка сброса */
+.reset-filters {
+    padding: 0.875rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.reset-filters:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: var(--accent-blue-soft);
+}
+
+/* Панель управления */
+.catalog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Переключатель вида */
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.view-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.view-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+/* Количество результатов */
+.results-count {
+    padding: 0.875rem 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    border: 1px solid var(--gray-800);
+}
+
+.count-number {
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Сетка товаров */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Карточка товара */
+.product-card {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-800);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-badge.wall {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.product-badge.floor {
+    background: #9333ea;
+    color: white;
+}
+
+.product-image-wrapper {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+}
+
+.product-image,
+.product-image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.product-image-hover {
+    opacity: 0;
+}
+
+.product-card:hover .product-image {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.product-card:hover .product-image-hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-series {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.product-model {
+    color: var(--accent-blue);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.product-coverage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+    margin-bottom: 1rem;
+}
+
+.coverage-label {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+.coverage-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+}
+
+/* Кнопки в карточке для мобильных */
+.product-actions-mobile {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-call-btn,
+.product-telegram-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-call-btn {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.product-telegram-btn {
+    background: #0088cc;
+    color: white;
+}
+
+.product-call-btn:hover,
+.product-telegram-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.product-btn {
+    width: 100%;
+    padding: 0.875rem;
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    color: var(--accent-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-btn:hover {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: 0 5px 20px var(--accent-blue-glow);
+}
+
+/* List view */
+.products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.product-card.list-view {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.product-card.list-view .product-image-wrapper {
+    padding-top: 100%;
+}
+
+/* No results */
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--gray-800);
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.reset-btn {
+    padding: 1rem 2rem;
+    background: var(--accent-blue);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.reset-btn:hover {
+    background: transparent;
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--accent-blue-glow);
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    max-width: 1000px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--gray-800);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--gray-700);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 1.2rem;
+}
+
+.modal-close:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: rotate(90deg);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.modal-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--gray-800);
+}
+
+.modal-secondary-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--gray-800);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-secondary-image:hover {
+    border-color: var(--accent-blue);
+    transform: scale(1.05);
+}
+
+.modal-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+
+.modal-category.wall {
+    background: var(--accent-blue-soft);
+    color: var(--accent-blue);
+}
+
+.modal-category.floor {
+    background: rgba(147, 51, 234, 0.1);
+    color: #9333ea;
+}
+
+.modal-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.modal-model {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.modal-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.875rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.spec-label {
+    color: var(--text-tertiary);
+}
+
+.spec-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.modal-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.price-label {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.price-value {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--accent-blue);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon {
+    font-size: 1.1rem;
+}
+
+.call-btn {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.call-btn:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--accent-blue-glow);
+}
+
+.telegram-btn {
+    background: #0088cc;
+    color: white;
+}
+
+.telegram-btn:hover {
+    background: #00a0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+    .filters-wrapper {
+        gap: 1rem;
+    }
+
+    .filter-group {
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog {
+        padding: 4rem 0;
+    }
+
+    .catalog-header {
+        margin-bottom: 2rem;
+    }
+
+    .mobile-filter-toggle {
+        display: flex;
+    }
+
+    .filters-section {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 350px;
+        height: 100vh;
+        z-index: 1000;
+        margin: 0;
+        border-radius: 0;
+        padding: 5rem 1.5rem 2rem;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+    }
+
+    .filters-section.active {
+        left: 0;
+    }
+
+    .filters-section::before {
+        display: none;
+    }
+
+    .filters-wrapper {
+        flex-direction: column;
+    }
+
+    .search-box,
+    .filter-group,
+    .price-filter {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .reset-filters {
+        width: 100%;
+    }
+
+    .catalog-controls {
+        flex-direction: column-reverse;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .results-count {
+        text-align: center;
+    }
+
+    /* УМЕНЬШАЕМ КАРТОЧКИ НА МОБИЛКЕ */
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .product-info {
+        padding: 0.75rem;
+    }
+
+    .product-series {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product-model {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product-coverage {
+        padding: 0.4rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .coverage-label {
+        font-size: 0.7rem;
+    }
+
+    .coverage-value {
+        font-size: 0.75rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-actions-mobile {
+        margin-bottom: 0.5rem;
+        gap: 0.25rem;
+    }
+
+    .product-call-btn,
+    .product-telegram-btn {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .product-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .product-badge {
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.65rem;
+    }
+
+    .product-image-wrapper {
+        padding-top: 80%;
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .product-info {
+        padding: 0.5rem;
+    }
+
+    .product-series {
+        font-size: 0.8rem;
+    }
+
+    .product-model {
+        font-size: 0.7rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-coverage {
+        padding: 0.25rem 0;
+    }
+
+    .coverage-label,
+    .coverage-value {
+        font-size: 0.65rem;
+    }
+
+    .product-price {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-actions-mobile {
+        gap: 0.2rem;
+    }
+
+    .product-call-btn,
+    .product-telegram-btn {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .product-btn {
+        padding: 0.4rem;
+        font-size: 0.7rem;
+    }
+
+    .product-badge {
+        padding: 0.15rem 0.5rem;
+        font-size: 0.6rem;
+    }
+
+    .product-image-wrapper {
+        padding-top: 75%;
+    }
+
+    .modal-content {
+        margin: 0.5rem;
+        padding: 0;
+    }
+
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 360px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image-wrapper {
+        padding-top: 70%;
+    }
+}
+
+/* Улучшения для touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+    .product-card:hover {
+        transform: none;
+    }
+
+    .product-btn:hover,
+    .modal-btn:hover {
+        transform: none;
+    }
+
+    .product-call-btn:active,
+    .product-telegram-btn:active,
+    .modal-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Добавьте эти стили в ваш catalog.css */
+
+/* Оверлей для фильтров */
+.filters-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Заголовок фильтров для мобильных */
+.filters-header {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--gray-800);
+    margin: -2rem -1.5rem 2rem -1.5rem;
+}
+
+.filters-header h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.filters-back,
+.filters-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filters-back:hover,
+.filters-close:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* Кнопки действий для мобильных */
+.filters-actions {
+    display: none;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-800);
+}
+
+.apply-filters {
+    flex: 1;
+    padding: 0.875rem;
+    background: var(--accent-blue);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-filters:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--accent-blue-glow);
+}
+
+/* Бейдж для индикации активных фильтров */
+.filter-badge {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-blue);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.25rem;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .filters-header {
+        display: flex;
+    }
+
+    .filters-actions {
+        display: flex;
+    }
+
+    .filters-section {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 350px;
+        height: 100vh;
+        z-index: 1000;
+        margin: 0;
+        border-radius: 0;
+        padding: 0 1.5rem 2rem;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        background: var(--bg-secondary);
+    }
+
+    .filters-section.active {
+        left: 0;
+    }
+
+    .filters-section::before {
+        display: none;
+    }
+
+    .filters-wrapper {
+        padding-top: 1rem;
+    }
+
+    .reset-filters {
+        flex: 1;
+        background: var(--bg-tertiary);
+        border-color: var(--gray-700);
+    }
+
+    .reset-filters:hover {
+        background: var(--bg-tertiary);
+    }
+}
+
+@media (max-width: 480px) {
+    .filters-header {
+        padding: 0.75rem 1rem;
+        margin: -1.5rem -1rem 1.5rem -1rem;
+    }
+
+    .filters-back,
+    .filters-close {
+        width: 36px;
+        height: 36px;
+    }
+
+    .filters-header h3 {
+        font-size: 1rem;
+    }
+}
