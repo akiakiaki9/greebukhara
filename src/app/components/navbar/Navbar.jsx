@@ -126,19 +126,53 @@ const Navbar = () => {
                         </ul>
 
                         <div className="mobile-contacts">
-                            <div className="mobile-contact-item">
-                                <FiPhone className="mobile-contact-icon" />
+                            <div className="mobile-contact-header">
+                                <h4 className="mobile-contact-title">Контакты</h4>
+                            </div>
+
+                            {/* Основной номер магазина */}
+                            <div className="mobile-contact-item main">
+                                <div className="mobile-contact-icon-wrapper">
+                                    <FiPhone className="mobile-contact-icon" />
+                                </div>
                                 <div className="mobile-contact-text">
-                                    <span className="mobile-contact-label">Позвоните нам</span>
+                                    <span className="mobile-contact-label">Магазин</span>
                                     <a href="tel:+998938456000" className="mobile-contact-link">+998 (93) 845-60-00</a>
+                                    <span className="mobile-contact-note">Ежедневно 9:00-19:00</span>
                                 </div>
                             </div>
+
+                            {/* Номер мастера */}
+                            <div className="mobile-contact-item master">
+                                <div className="mobile-contact-icon-wrapper master-icon">
+                                    <FiPhone className="mobile-contact-icon" />
+                                </div>
+                                <div className="mobile-contact-text">
+                                    <span className="mobile-contact-label master-label">Мастер Наби</span>
+                                    <a href="tel:+998902990100" className="mobile-contact-link master-link">+998 (90) 299-01-00</a>
+                                    <span className="mobile-contact-note">Монтаж и ремонт</span>
+                                </div>
+                            </div>
+
                             <div className="mobile-contact-item">
                                 <FiClock className="mobile-contact-icon" />
                                 <div className="mobile-contact-text">
                                     <span className="mobile-contact-label">Режим работы</span>
                                     <span className="mobile-contact-schedule">Ежедневно 9:00 - 19:00</span>
+                                    <span className="mobile-contact-note">Без выходных</span>
                                 </div>
+                            </div>
+
+                            {/* Кнопки быстрых действий */}
+                            <div className="mobile-quick-actions">
+                                <a href="tel:+998938456000" className="quick-action-btn call-shop">
+                                    <FiPhone className="quick-icon" />
+                                    <span>Магазин</span>
+                                </a>
+                                <a href="tel:+998902990100" className="quick-action-btn call-master">
+                                    <FiPhone className="quick-icon" />
+                                    <span>Мастер</span>
+                                </a>
                             </div>
                         </div>
                     </div>
