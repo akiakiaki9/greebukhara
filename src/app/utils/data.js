@@ -56,7 +56,7 @@ export const DATA = [
     { id: 30, brand: "GREE", series: "GOLDENHOUSE", model: "24H", coverage: "70-100KV", price: 17500000, category: "floor", image_1: "/images/data/12/1.png", image_2: "" },
 
     // 13 — FRE AIR
-    { id: 31, brand: "GREE", series: "FRE AIR", model: "24H", coverage: "70-100KV", price: 19200000, category: "floor", image_1: "/images/data/13/1.png", image_2: "" },
+    { id: 31, brand: "GREE", series: "FREE AIR", model: "24H", coverage: "70-100KV", price: 19200000, category: "floor", image_1: "/images/data/13/1.png", image_2: "" },
 
     // 14 — 100H
     { id: 32, brand: "GREE", series: "T3", model: "60H", coverage: "120-220KV", price: 26400000, category: "floor", image_1: "/images/data/14/1.png", image_2: "" },
