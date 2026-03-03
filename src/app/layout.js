@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no, address=no, email=no" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        loading
       </body>
     </html>
   );
