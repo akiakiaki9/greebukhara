@@ -42,14 +42,8 @@ const Catalog = () => {
         };
     }, [isFilterOpen]);
 
-    const seriesList = ['all', ...new Set(DATA.map(item => item.series))];
-    const categories = ['all', 'wall', 'floor'];
-
-    const formatPrice = (price) => {
-        return new Intl.NumberFormat('uz-UZ').format(price) + ' сум';
-    };
-
-    const applyFilters = () => {
+    // ✅ АВТОМАТИЧЕСКАЯ ФИЛЬТРАЦИЯ
+    useEffect(() => {
         let filtered = DATA;
 
         if (selectedSeries !== 'all') {
@@ -72,6 +66,13 @@ const Catalog = () => {
         }
 
         setFilteredData(filtered);
+    }, [selectedSeries, selectedCategory, priceRange, searchQuery]); // ← Зависимости
+
+    const seriesList = ['all', ...new Set(DATA.map(item => item.series))];
+    const categories = ['all', 'wall', 'floor'];
+
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('uz-UZ').format(price) + ' сум';
     };
 
     const resetFilters = () => {
@@ -79,7 +80,7 @@ const Catalog = () => {
         setSelectedCategory('all');
         setPriceRange({ min: 0, max: 60000000 });
         setSearchQuery('');
-        setFilteredData(DATA);
+        // filteredData обновится автоматически через useEffect
     };
 
     const handlePhoneCall = () => {
@@ -140,19 +141,13 @@ const Catalog = () => {
                                 type="text"
                                 placeholder="Поиск по моделям..."
                                 value={searchQuery}
-                                onChange={(e) => {
-                                    setSearchQuery(e.target.value);
-                                    applyFilters();
-                                }}
+                                onChange={(e) => setSearchQuery(e.target.value)} // ← Просто меняем стейт
                                 className="search-input"
                             />
                             {searchQuery && (
                                 <FiX
                                     className="clear-search"
-                                    onClick={() => {
-                                        setSearchQuery('');
-                                        applyFilters();
-                                    }}
+                                    onClick={() => setSearchQuery('')} // ← Просто очищаем
                                 />
                             )}
                         </div>
@@ -161,10 +156,7 @@ const Catalog = () => {
                             <label className="filter-label">Серия:</label>
                             <select
                                 value={selectedSeries}
-                                onChange={(e) => {
-                                    setSelectedSeries(e.target.value);
-                                    applyFilters();
-                                }}
+                                onChange={(e) => setSelectedSeries(e.target.value)} // ← Просто меняем стейт
                                 className="filter-select"
                             >
                                 {seriesList.map(series => (
@@ -179,10 +171,7 @@ const Catalog = () => {
                             <label className="filter-label">Тип:</label>
                             <select
                                 value={selectedCategory}
-                                onChange={(e) => {
-                                    setSelectedCategory(e.target.value);
-                                    applyFilters();
-                                }}
+                                onChange={(e) => setSelectedCategory(e.target.value)} // ← Просто меняем стейт
                                 className="filter-select"
                             >
                                 <option value="all">Все типы</option>
@@ -199,10 +188,7 @@ const Catalog = () => {
                                 max="60000000"
                                 step="100000"
                                 value={priceRange.max}
-                                onChange={(e) => {
-                                    setPriceRange({ ...priceRange, max: Number(e.target.value) });
-                                    applyFilters();
-                                }}
+                                onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })} // ← Просто меняем стейт
                                 className="price-range"
                             />
                             <div className="price-values">

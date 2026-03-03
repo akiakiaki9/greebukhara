@@ -15,7 +15,7 @@ const Header = () => {
             id: 1,
             title: 'Премиальные кондиционеры Gree',
             subtitle: 'Официальный дилер в Бухаре',
-            description: 'Японские технологии и надежность для вашего комфорта',
+            description: 'Немецкие технологии и надежность для вашего комфорта',
             image: '/images/header/1.jpg',
             buttonText: 'Каталог',
             buttonLink: '/conditioners',

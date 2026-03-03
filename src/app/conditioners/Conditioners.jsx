@@ -43,30 +43,26 @@ const ConditionersPage = () => {
         };
     }, [isFilterOpen]);
 
-    // Получаем уникальные серии для фильтра
-    const seriesList = ['all', ...new Set(DATA.map(item => item.series))];
-
-    // Форматирование цены
-    const formatPrice = (price) => {
-        return new Intl.NumberFormat('uz-UZ').format(price) + ' сум';
-    };
-
-    // Фильтрация
-    const applyFilters = () => {
+    // ✅ АВТОМАТИЧЕСКАЯ ФИЛЬТРАЦИЯ - срабатывает при изменении любого фильтра
+    useEffect(() => {
         let filtered = DATA;
 
+        // Фильтр по серии
         if (selectedSeries !== 'all') {
             filtered = filtered.filter(item => item.series === selectedSeries);
         }
 
+        // Фильтр по категории
         if (selectedCategory !== 'all') {
             filtered = filtered.filter(item => item.category === selectedCategory);
         }
 
+        // Фильтр по цене
         filtered = filtered.filter(item =>
             item.price >= priceRange.min && item.price <= priceRange.max
         );
 
+        // Поиск
         if (searchQuery) {
             filtered = filtered.filter(item =>
                 item.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -75,6 +71,14 @@ const ConditionersPage = () => {
         }
 
         setFilteredData(filtered);
+    }, [selectedSeries, selectedCategory, priceRange, searchQuery]); // ← зависимости
+
+    // Получаем уникальные серии для фильтра
+    const seriesList = ['all', ...new Set(DATA.map(item => item.series))];
+
+    // Форматирование цены
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('uz-UZ').format(price) + ' сум';
     };
 
     const resetFilters = () => {
@@ -82,8 +86,8 @@ const ConditionersPage = () => {
         setSelectedCategory('all');
         setPriceRange({ min: 0, max: 60000000 });
         setSearchQuery('');
-        setFilteredData(DATA);
         setIsFilterOpen(false);
+        // filteredData обновится автоматически через useEffect
     };
 
     const handlePhoneCall = (phone) => {
@@ -192,19 +196,13 @@ const ConditionersPage = () => {
                                     type="text"
                                     placeholder="Поиск по моделям..."
                                     value={searchQuery}
-                                    onChange={(e) => {
-                                        setSearchQuery(e.target.value);
-                                        applyFilters();
-                                    }}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
                                     className="search-input"
                                 />
                                 {searchQuery && (
                                     <FiX
                                         className="clear-search"
-                                        onClick={() => {
-                                            setSearchQuery('');
-                                            applyFilters();
-                                        }}
+                                        onClick={() => setSearchQuery('')}
                                     />
                                 )}
                             </div>
@@ -213,10 +211,7 @@ const ConditionersPage = () => {
                                 <label className="filter-label">Серия:</label>
                                 <select
                                     value={selectedSeries}
-                                    onChange={(e) => {
-                                        setSelectedSeries(e.target.value);
-                                        applyFilters();
-                                    }}
+                                    onChange={(e) => setSelectedSeries(e.target.value)}
                                     className="filter-select"
                                 >
                                     {seriesList.map(series => (
@@ -231,10 +226,7 @@ const ConditionersPage = () => {
                                 <label className="filter-label">Тип:</label>
                                 <select
                                     value={selectedCategory}
-                                    onChange={(e) => {
-                                        setSelectedCategory(e.target.value);
-                                        applyFilters();
-                                    }}
+                                    onChange={(e) => setSelectedCategory(e.target.value)}
                                     className="filter-select"
                                 >
                                     <option value="all">Все типы</option>
@@ -251,10 +243,7 @@ const ConditionersPage = () => {
                                     max="60000000"
                                     step="100000"
                                     value={priceRange.max}
-                                    onChange={(e) => {
-                                        setPriceRange({ ...priceRange, max: Number(e.target.value) });
-                                        applyFilters();
-                                    }}
+                                    onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })}
                                     className="price-range"
                                 />
                                 <div className="price-values">
@@ -437,14 +426,6 @@ const ConditionersPage = () => {
                                         <a href="tel:+998902990100" className="master-btn call-btn">
                                             Позвонить
                                         </a>
-                                        {/* <a
-                                            href="https://t.me/nabi_master"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="master-btn telegram-btn"
-                                        >
-                                            Telegram
-                                        </a> */}
                                     </div>
                                 </div>
                             </div>
@@ -527,14 +508,6 @@ const ConditionersPage = () => {
                                         <a href="tel:+998902990100" className="modal-btn call-btn">
                                             <FiPhone /> Позвонить мастеру
                                         </a>
-                                        {/* <a
-                                            href="https://t.me/nabi_master"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="modal-btn telegram-btn"
-                                        >
-                                            <FaTelegramPlane /> Telegram
-                                        </a> */}
                                     </div>
 
                                     <div className="modal-master-note">

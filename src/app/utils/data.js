@@ -43,16 +43,24 @@ export const DATA = [
     { id: 25, brand: "GREE", series: "U CROWN", model: "12H", coverage: "30-40KV", price: 7550000, category: "wall", image_1: "/images/data/9/1.png", image_2: "/images/data/9/2.png" },
 
     // 10 — T FRESH
-    { id: 26, brand: "GREE", series: "T FRESH", model: "55H", coverage: "140-200KV", price: 23800000, category: "floor", image_1: "/images/data/10/1.png", image_2: "/images/data/10/2.png" },
+    { id: 26, brand: "GREE", series: "T FRESH", model: "24H", coverage: "700-100KV", price: 14500000, category: "floor", image_1: "/images/data/10/1.png", image_2: "/images/data/10/2.png" },
+    { id: 27, brand: "GREE", series: "T FRESH", model: "48H", coverage: "120-160KV", price: 22570000, category: "floor", image_1: "/images/data/10/1.png", image_2: "/images/data/10/2.png" },
+    { id: 28, brand: "GREE", series: "T FRESH", model: "55H", coverage: "140-200KV", price: 23800000, category: "floor", image_1: "/images/data/10/1.png", image_2: "/images/data/10/2.png" },
 
-    // последние 3 категории — только одно фото
+    // 11 I SHINE
+    { id: 29, brand: "GREE", series: "I SHINE", model: "24H", coverage: "70-100", price: 15750000, category: "floor", image_1: "/images/data/11/1.png", image_2: "/images/data/11/2.png" },
 
-    // 13 — GOLDENHOUSE
-    { id: 28, brand: "GREE", series: "GOLDENHOUSE", model: "24H", coverage: "70-100KV", price: 17500000, category: "floor", image_1: "/images/data/13/1.png", image_2: "" },
+    // последние 4 категории — только одно фото
 
-    // 14 — FRE AIR
-    { id: 29, brand: "GREE", series: "FRE AIR", model: "24H", coverage: "70-100KV", price: 19200000, category: "floor", image_1: "/images/data/14/1.png", image_2: "" },
+    // 12 — GOLDENHOUSE
+    { id: 30, brand: "GREE", series: "GOLDENHOUSE", model: "24H", coverage: "70-100KV", price: 17500000, category: "floor", image_1: "/images/data/12/1.png", image_2: "" },
+
+    // 13 — FRE AIR
+    { id: 31, brand: "GREE", series: "FRE AIR", model: "24H", coverage: "70-100KV", price: 19200000, category: "floor", image_1: "/images/data/13/1.png", image_2: "" },
+
+    // 14 — 100H
+    { id: 32, brand: "GREE", series: "T3", model: "60H", coverage: "120-220KV", price: 26400000, category: "floor", image_1: "/images/data/14/1.png", image_2: "" },
 
     // 15 — 100H
-    { id: 30, brand: "GREE", series: "100H", model: "100H", coverage: "250-350KV", price: 52000000, category: "floor", image_1: "/images/data/15/1.png", image_2: "" }
+    { id: 33, brand: "GREE", series: "100H", model: "100H", coverage: "250-350KV", price: 52000000, category: "floor", image_1: "/images/data/15/1.png", image_2: "" },
 ];
