@@ -417,8 +417,8 @@ const ConditionersPage = () => {
                                 <div className="master-contact">
                                     <div className="master-phone">
                                         <FiPhone className="phone-icon" />
-                                        <a href="tel:+998902990100" className="phone-number">
-                                            +998 (90) 299-01-00
+                                        <a href="tel:+998938456000" className="phone-number">
+                                            +998 (93) 845-60-00
                                         </a>
                                     </div>
                                     <p className="phone-note">Звоните, всегда на связи</p>
@@ -505,8 +505,8 @@ const ConditionersPage = () => {
                                     </div>
 
                                     <div className="modal-actions">
-                                        <a href="tel:+998902990100" className="modal-btn call-btn">
-                                            <FiPhone /> Позвонить мастеру
+                                        <a href="tel:+998938456000" className="modal-btn call-btn">
+                                            <FiPhone /> Позвонить
                                         </a>
                                     </div>
 
